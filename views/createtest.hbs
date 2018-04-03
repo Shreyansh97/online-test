@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Online Test System</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="/" class="logo"><strong>Online Test System</strong></a>
+								</header>
+
+							<!-- Content -->
+								<section>
+									{{#if message}}
+										<p>{{message}}</p>
+									{{/if}}
+									<header class="main">
+										<h1>Create new Test</h1>
+									</header>
+                                    <form method="POST" action="/createtest">
+                                        <div class="row uniform">
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="title">Title</label>
+                                                <input type="text" name="title" required>
+                                            </div>
+                                            <div class="12u 12u$(xsmall)">
+                                                <label for="description">Description</label>
+                                                <textarea name="description"></textarea>
+                                            </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="startdate">Start Date</label>
+                                                <input type="date" name="startdate" required>
+                                            </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="starttime">Start Time (24 hours)</label>
+                                                <input type="time" name="starttime" required>
+                                            </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="enddate">End Date</label>
+                                                <input type="date" name="enddate" required>
+                                            </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="endtime">End Time (24 hours)</label>
+                                                <input type="time" name="endtime" required>
+                                            </div>
+                                            <div>
+                                                <input type="submit" value="submit">
+                                                <input type="reset" value="reset">
+                                            </div>
+                                        </div>
+                                    </form>
+								</section>
+						</div>
+					</div>
+				<!-- Sidebar -->
+					<div id="sidebar">
+							<div class="inner">
+								<!-- Menu -->
+									<nav id="menu">
+										<header class="major">
+											<h2>Menu</h2>
+										</header>
+										<ul>
+											<li><a href="/profile">Profile</a></li>
+											<li><a href="/tests">View Tests</a></li>
+											<li><a href="/createtest">Create New Test</a></li>
+											<li><a href="/managetest">Manage Created Test</a></li>
+											<li><a href="/logout">Logout</a></li>
+										</ul>
+									</nav>
+							</div>
+						</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="js/jquery.min.js"></script>
+			<script src="js/skel.min.js"></script>
+			<script src="js/util.js"></script>
+			<script src="js/main.js"></script>
+
+	</body>
+</html>

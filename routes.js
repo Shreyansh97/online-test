@@ -1,6 +1,7 @@
 module.exports = function(app,passport){
     const index = require('./routes/index');
     const user = require('./routes/user');
+    const admin = require('./routes/admin');
     const multer = require('multer');
 
     const uploading = multer({
@@ -14,6 +15,10 @@ module.exports = function(app,passport){
     //user routes
     app.get('/profile',isLoggedInProfile,user.profile);
     app.post('/uploadProfile',isLoggedInProfile,uploading.single('pic'),user.uploadPic);
+
+    //admin routes
+    app.get('/createtest',isLoggedIn,admin.test);
+    app.post('/createtest',isLoggedIn,admin.addtest);
 
     //login
     app.post('/login',passport.authenticate('local-login',{
@@ -38,7 +43,7 @@ module.exports = function(app,passport){
 
 function isLoggedIn(req,res,next){
     if(req.isAuthenticated()){
-        if(req.body.photo)
+        if(req.user.photo)
             return next();
         else
             return res.redirect('/profile');
