@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Online Test System</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="/" class="logo"><strong>Online Test System</strong></a>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Login to continue</h1>
+									</header>
+                                    <form method="POST" action="/login">
+                                        <div class="row uniform">
+                                            <div class="6u 12u$">
+                                                <label for="email">Email ID</label>
+                                                <input type="email" name="email" placeholder="abc@xyz.com" required>
+                                            </div>
+                                            <div class="6u 12u$">
+                                                <label for="password">Password</label>
+                                                <input type="password" name="password" placeholder="password" required>
+                                            </div>
+                                            <div class="6u 12u$">
+                                                <input type="submit" value="LOGIN">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    {{#if loginMessage}}
+                                        <p>{{loginMessage}}</p>
+                                    {{/if}}
+                                    <h2>Don't have an account? Signup here</h2>
+                                    <form method="POST" action="/signup">
+                                        <div class="row uniform">
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="email">Email ID</label>
+                                                <input type="email" name="email" placeholder="abc@xyz.com" required>
+                                            </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="name">Full Name</label>
+                                                <input type="text" name="name" placeholder="John Doe" required>
+                                            </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="dob">Date of Birth</label>
+                                                <input type="date" name="dob" placeholder="DDMMYYYY" required>
+                                            </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="password">Password</label>
+                                                <input type="password" name="password" placeholder="password" required>
+                                            </div>
+                                            <div class="6u 12u$">
+                                                <input type="submit" value="SIGNUP">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    {{#if signupMessage}}
+                                        <p>{{signupMessage}}</p>
+                                    {{/if}}
+								</section>
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="js/jquery.min.js"></script>
+			<script src="js/skel.min.js"></script>
+			<script src="js/util.js"></script>
+			<script src="js/main.js"></script>
+
+	</body>
+</html>
