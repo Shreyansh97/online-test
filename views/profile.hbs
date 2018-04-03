@@ -29,7 +29,7 @@
                                         <img src="uploads/{{req.user.photo}}">
                                     {{else}}
                                         <h2>Please upload profile picture to continue</h2>
-                                        <h4>File type needs to be jpg only</h4>
+                                        <h4>File type needs to be png,jpg or jpeg</h4>
                                         <form action="uploadProfile" method="POST" enctype="multipart/form-data">
                                             <input type="file" name="pic">
                                             <input type="submit" value="upload">
@@ -44,6 +44,24 @@
 								</section>
 						</div>
 					</div>
+				<!-- Sidebar -->
+					<div id="sidebar">
+							<div class="inner">
+								<!-- Menu -->
+									<nav id="menu">
+										<header class="major">
+											<h2>Menu</h2>
+										</header>
+										<ul>
+											<li><a href="/profile">Profile</a></li>
+											<li><a href="/tests">Give a Test</a></li>
+											<li><a href="/createtest">Create New Test</a></li>
+											<li><a href="/managetest">Manage Created Test</a></li>
+											<li><a href="/logout">Logout</a></li>
+										</ul>
+									</nav>
+							</div>
+						</div>
 
 			</div>
 

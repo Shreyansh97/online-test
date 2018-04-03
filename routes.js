@@ -13,12 +13,11 @@ module.exports = function(app,passport){
 
     //user routes
     app.get('/profile',isLoggedInProfile,user.profile);
-    app.get('/home',isLoggedIn,user.home);
     app.post('/uploadProfile',isLoggedInProfile,uploading.single('pic'),user.uploadPic);
 
     //login
     app.post('/login',passport.authenticate('local-login',{
-        successRedirect : '/home',
+        successRedirect : '/profile',
         failureRedirect : '/',
         failureFlash : true
     }));

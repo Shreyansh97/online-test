@@ -10,13 +10,9 @@ router.profile = function(req,res){
     });
 }
 
-router.home = function(req,res){
-    res.send("HI");
-}
-
 router.uploadPic = function(req,res){
     let ext = path.extname(req.file.originalname);
-    if(ext !='.jpg' || ext !='.png' || ext !='.jpeg' || ext !='.bmp')
+    if(ext !='.jpg' && ext !='.png' && ext !='.jpeg' && ext !='.bmp')
         return res.redirect('/profile');
     db.query("UPDATE users SET photo=? WHERE email=?",[req.file.filename,req.user.email],function(err,result){
         if(err) throw err;
