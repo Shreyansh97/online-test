@@ -1,6 +1,20 @@
 module.exports = function(app,passport){
     const index = require('./routes/index');
+    const user = require('./routes/user');
+    const multer = require('multer');
+
+    const uploading = multer({
+        dest : __dirname + '/public/uploads/',
+        limits: {fileSize: 1000000, files:1},
+    })
+
+    //index route
     app.get('/',redirectIfLoggedIn,index.index);
+
+    //user routes
+    app.get('/profile',isLoggedInProfile,user.profile);
+    app.get('/home',isLoggedIn,user.home);
+    app.post('/uploadProfile',isLoggedInProfile,uploading.single('pic'),user.uploadPic);
 
     //login
     app.post('/login',passport.authenticate('local-login',{
@@ -29,6 +43,14 @@ function isLoggedIn(req,res,next){
             return next();
         else
             return res.redirect('/profile');
+    }
+    else
+        res.redirect('/');
+}
+
+function isLoggedInProfile(req,res,next){
+    if(req.isAuthenticated()){
+        return next();
     }
     else
         res.redirect('/');

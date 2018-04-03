@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Online Test System</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="/" class="logo"><strong>Online Test System</strong></a>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>{{req.user.name}}</h1>
+									</header>
+                                    {{#if req.user.photo}}
+                                        <img src="uploads/{{req.user.photo}}">
+                                    {{else}}
+                                        <h2>Please upload profile picture to continue</h2>
+                                        <h4>File type needs to be jpg only</h4>
+                                        <form action="uploadProfile" method="POST" enctype="multipart/form-data">
+                                            <input type="file" name="pic">
+                                            <input type="submit" value="upload">
+                                        </form>
+                                    {{/if}}
+                                    <h3>Email</h3>
+                                    <p>{{req.user.email}}</p>
+                                    <h3>Date of Birth</h3>
+                                    <p>{{req.user.dob}}</p>
+                                    <h3>Password</h3>
+                                    <p>{{req.user.password}}</p>
+								</section>
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="js/jquery.min.js"></script>
+			<script src="js/skel.min.js"></script>
+			<script src="js/util.js"></script>
+			<script src="js/main.js"></script>
+
+	</body>
+</html>
