@@ -19,6 +19,11 @@ module.exports = function(app,passport){
     //admin routes
     app.get('/createtest',isLoggedIn,admin.test);
     app.post('/createtest',isLoggedIn,admin.addtest);
+    app.get('/managetest',isLoggedIn,admin.manage);
+    app.get('/manage/:id',isLoggedIn,admin.edittest);
+    app.post('/edittest',isLoggedIn,admin.modifytest);
+    app.post('/addadmin',isLoggedIn,admin.addadmin);
+    app.post('/addquestion',isLoggedIn,admin.addquestion);
 
     //login
     app.post('/login',passport.authenticate('local-login',{

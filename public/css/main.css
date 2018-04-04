@@ -2308,6 +2308,7 @@
 
 	input[type="text"],
 	input[type="password"],
+	input[type="number"],
 	input[type="email"],
 	input[type="tel"],
 	input[type="date"],
@@ -2337,6 +2338,7 @@
 		input[type="email"]:invalid,
 		input[type="date"]:invalid,
 		input[type="time"]:invalid,
+		input[type="number"]:invalid,
 		input[type="tel"]:invalid,
 		input[type="search"]:invalid,
 		input[type="url"]:invalid,
@@ -2350,6 +2352,7 @@
 		input[type="email"]:focus,
 		input[type="tel"]:focus,
 		input[type="date"]:focus,
+		input[type="number"]:focus,
 		input[type="time"]:focus,
 		input[type="search"]:focus,
 		input[type="url"]:focus,
@@ -2394,6 +2397,7 @@
 
 	input[type="text"],
 	input[type="password"],
+	input[type="number"],
 	input[type="email"],
 	input[type="tel"],
 	input[type="date"],

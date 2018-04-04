@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Online Test System</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/css/main.css" />
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="/" class="logo"><strong>Online Test System</strong></a>
+								</header>
+
+							<!-- Content -->
+								<section>
+									{{#if message}}
+										<p>{{message}}</p>
+									{{/if}}
+									<header class="main">
+										<h1>Manage Test</h1>
+									</header>
+                                    <form method="POST" action="/edittest">
+                                        <input type="hidden" value="{{details.id}}" name="id">
+                                        <div class="row uniform">
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="title">Title</label>
+                                                <input type="text" name="title" value="{{details.title}}" required>
+                                            </div>
+                                            <div class="12u 12u$(xsmall)">
+                                                <label for="description">Description</label>
+                                                <textarea name="description">{{details.description}}</textarea>
+                                            </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="startdate">Start Date</label>
+                                                <input type="date" name="startdate" value="{{details.startdate}}" required>
+                                            </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="starttime">Start Time (24 hours)</label>
+                                                <input type="time" name="starttime" value="{{details.starttime}}" required>
+                                            </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="enddate">End Date</label>
+                                                <input type="date" name="enddate" value="{{details.enddate}}" required>
+                                            </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="endtime">End Time (24 hours)</label>
+                                                <input type="time" name="endtime" value="{{details.endtime}}" required>
+                                            </div>
+                                            <div>
+                                                <input type="submit" value="Modify">
+                                                <input type="reset" value="reset">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <h4>Admins</h4>
+                                    <ul>
+                                        {{#each admins}}
+                                            <li>{{this.user}}</li>
+                                        {{/each}}
+                                    </ul>
+                                    <form method="POST" action="/addadmin">
+                                        <input type="hidden" name="id" value="{{details.id}}">
+                                        <div class="row uniform">
+                                            <div class="6u 12u$(xsmall)">
+                                                <input type="email" name="user" placeholder="New admin email" required>
+                                            </div>
+                                            <div>
+                                                <input type="submit" value="Add new admin">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <h3>Questions</h3>
+                                    <ul>
+                                        {{#each questions}}
+                                            <h4>{{@index}}. {{this.body}}</h4>
+                                            <p>a. {{this.op1}}</p>
+                                            <p>b. {{this.op2}}</p>
+                                            <p>c. {{this.op3}}</p>
+                                            <p>d. {{this.op4}}</p>
+                                            <p>Correct option : <strong>{{this.correct}}</strong></p>
+                                            <p>Score for Question: <strong>{{this.score}}</strong></p>
+                                        {{/each}}
+                                    </ul>
+                                    <h3>Add a new Question</h3>
+                                    <form action="/addquestion" method="POST">
+                                        <input type="hidden" name="test" value="{{details.id}}">
+                                        <div class="row uniform">
+                                            <div class="12u 12u$(xsmall)">
+                                                <label for="body">Question Body</label>
+                                                <textarea name="body" required></textarea>
+                                            </div>
+                                            <div class="12u 12u$(xsmall)">
+                                                <label for="op1">Option a</label>
+                                                <textarea name="op1" required></textarea>
+                                            </div>
+                                            <div class="12u 12u$(xsmall)">
+                                                <label for="op2">Option b</label>
+                                                <textarea name="op2" required></textarea>
+                                            </div>
+                                            <div class="12u 12u$(xsmall)">
+                                                <label for="op3">Option c</label>
+                                                <textarea name="op3" required></textarea>
+                                            </div>
+                                            <div class="12u 12u$(xsmall)">
+                                                <label for="op4">Option d</label>
+                                                <textarea name="op4" required></textarea>
+                                            </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="score">Score for question</label>
+                                                <input type="number" name="score" required>
+                                            </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="correct">Correct Option</label>
+                                                <select name="correct">
+                                                    <option value="a">a</option>
+                                                    <option value="b">b</option>
+                                                    <option value="c">c</option>
+                                                    <option value="d">d</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <input type="submit" value="Add Question">
+                                                <input type="reset" value="reset">
+                                            </div>
+                                        </div>
+                                    </form>
+								</section>
+						</div>
+					</div>
+				<!-- Sidebar -->
+					<div id="sidebar">
+							<div class="inner">
+								<!-- Menu -->
+									<nav id="menu">
+										<header class="major">
+											<h2>Menu</h2>
+										</header>
+										<ul>
+											<li><a href="/profile">Profile</a></li>
+											<li><a href="/tests">View Tests</a></li>
+											<li><a href="/createtest">Create New Test</a></li>
+											<li><a href="/managetest">Manage Created Test</a></li>
+											<li><a href="/logout">Logout</a></li>
+										</ul>
+									</nav>
+							</div>
+						</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="/js/jquery.min.js"></script>
+			<script src="/js/skel.min.js"></script>
+			<script src="/js/util.js"></script>
+			<script src="/js/main.js"></script>
+
+	</body>
+</html>
