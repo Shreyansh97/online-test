@@ -39,8 +39,24 @@
                                     <p>{{req.user.email}}</p>
                                     <h3>Date of Birth</h3>
                                     <p>{{req.user.dob}}</p>
-                                    <h3>Password</h3>
-                                    <p>{{req.user.password}}</p>
+									<br><br>
+									<h2>Tests given</h2>
+									<table>
+										<thead>
+											<tr>
+												<th>Test Title</th>
+												<th>Score</th>
+											</tr>
+										</thead>
+										<tbody>
+											{{#each tests}}
+												<tr>
+													<td><a href="/view/{{this.id}}">{{this.title}}</a></td>
+													<td>{{this.score}}</td>
+												</tr>
+											{{/each}}
+										</tbody>
+									</table>
 								</section>
 						</div>
 					</div>

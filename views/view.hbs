@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Online Test System</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/css/main.css" />
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="/" class="logo"><strong>Online Test System</strong></a>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>View all tests</h1>
+									</header>
+                                    <h3>Ongoing tests</h3>
+                                    <table class="alt">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Start Time</th>
+                                                <th>End Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each present}}
+                                                <tr>
+                                                    <td><a href="/view/{{this.id}}">{{this.title}}</a></td>
+                                                    <td><a href="/view/{{this.id}}">{{this.start}}</a></td>
+                                                    <td><a href="/view/{{this.id}}">{{this.end}}</a></td>
+                                                </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+                                    <br><br>
+                                    <h3>Upcoming tests</h3>
+                                    <table class="alt">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Start Time</th>
+                                                <th>End Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each upcoming}}
+                                                <tr>
+                                                    <td><a href="/view/{{this.id}}">{{this.title}}</a></td>
+                                                    <td><a href="/view/{{this.id}}">{{this.start}}</a></td>
+                                                    <td><a href="/view/{{this.id}}">{{this.end}}</a></td>
+                                                </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+                                    <h3>Past tests</h3>
+                                    <table class="alt">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Start Time</th>
+                                                <th>End Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each past}}
+                                                <tr>
+                                                    <td><a href="/view/{{this.id}}">{{this.title}}</a></td>
+                                                    <td><a href="/view/{{this.id}}">{{this.start}}</a></td>
+                                                    <td><a href="/view/{{this.id}}">{{this.end}}</a></td>
+                                                </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+								</section>
+						</div>
+					</div>
+				<!-- Sidebar -->
+					<div id="sidebar">
+							<div class="inner">
+								<!-- Menu -->
+									<nav id="menu">
+										<header class="major">
+											<h2>Menu</h2>
+										</header>
+										<ul>
+											<li><a href="/profile">Profile</a></li>
+											<li><a href="/tests">View Tests</a></li>
+											<li><a href="/createtest">Create New Test</a></li>
+											<li><a href="/managetest">Manage Created Test</a></li>
+											<li><a href="/logout">Logout</a></li>
+										</ul>
+									</nav>
+							</div>
+						</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="/js/jquery.min.js"></script>
+			<script src="/js/skel.min.js"></script>
+			<script src="/js/util.js"></script>
+			<script src="/js/main.js"></script>
+
+	</body>
+</html>

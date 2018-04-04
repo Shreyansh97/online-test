@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Online Test System</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/css/main.css" />
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="/" class="logo"><strong>Online Test System</strong></a>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>{{details.title}}</h1>
+									</header>
+                                    <h2>Questions</h2>
+                                    <form action="/submit" method="POST" id="form">
+                                        <input type="hidden" name="test" value="{{details.id}}">
+                                        <ul class="alt">
+                                            {{#each questions}}
+                                            <li>
+                                                <p>{{this.body}}</p>
+                                                <input type="radio" name="{{this.id}}" value="a"> {{this.op1}} <br>
+                                                <input type="radio" name="{{this.id}}" value="b"> {{this.op2}} <br>
+                                                <input type="radio" name="{{this.id}}" value="c"> {{this.op3}} <br>
+                                                <input type="radio" name="{{this.id}}" value="d"> {{this.op4}} <br>
+                                                <p>Max Marks : {{this.score}}</p>
+                                            </li>
+                                            {{/each}}
+                                        </ul>
+                                        <input type="submit" value="submit test">
+                                    </form>
+								</section>
+						</div>
+					</div>
+				<!-- Sidebar -->
+					<div id="sidebar">
+							<div class="inner">
+								<!-- Menu -->
+									<nav id="menu">
+                                        <h1>Time Remaining</h1>
+                                        <h1 id="timer"></h1>
+									</nav>
+							</div>
+						</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="/js/jquery.min.js"></script>
+			<script src="/js/skel.min.js"></script>
+			<script src="/js/util.js"></script>
+			<script src="/js/main.js"></script>
+        <script>
+            $(document).ready(function(){
+                var countDownDate = new Date("{{details.end}}").getTime();
+                var x = setInterval(function() {
+                    var now = new Date().getTime();
+                    var distance = countDownDate - now;
+                    var hours = Math.floor(distance / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    if(minutes<10)
+                        minutes="0"+minutes;
+                    if(seconds<10)
+                        seconds="0"+seconds;
+                    document.getElementById("timer").innerHTML =hours + ":" + minutes + ":" + seconds;
+                    if (distance <= 0) {
+                        $("#form").submit();
+                    }
+
+                }, 1000);
+            });
+        </script>
+	</body>
+</html>

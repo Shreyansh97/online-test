@@ -23,7 +23,7 @@ router.addtest = function(req,res){
 }
 
 router.manage = function(req,res){
-    let query = "SELECT id,title,start,end FROM test INNER JOIN admins ON test.id=admins.test WHERE admins.user=? AND ";
+    let query = "SELECT id,title,date_format(start,'%d-%m-%Y %h:%i %p') as start,date_format(end,'%d-%m-%Y %h:%i %p') as end FROM test INNER JOIN admins ON test.id=admins.test WHERE admins.user=? AND ";
     let ending = " ORDER BY start DESC";
     db.query(query+"start > CURRENT_TIMESTAMP"+ending,[req.user.email],function(err,upcoming){
         if(err) throw err;

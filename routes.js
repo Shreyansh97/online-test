@@ -15,6 +15,10 @@ module.exports = function(app,passport){
     //user routes
     app.get('/profile',isLoggedInProfile,user.profile);
     app.post('/uploadProfile',isLoggedInProfile,uploading.single('pic'),user.uploadPic);
+    app.get('/tests',isLoggedIn,user.viewall);
+    app.get('/view/:id',isLoggedIn,user.viewtest);
+    app.get('/givetest/:id',isLoggedIn,user.givetest);
+    app.post('/submit',isLoggedIn,user.submit);
 
     //admin routes
     app.get('/createtest',isLoggedIn,admin.test);
@@ -67,7 +71,7 @@ function isLoggedInProfile(req,res,next){
 
 function redirectIfLoggedIn(req,res,next){
     if(req.isAuthenticated())
-        res.redirect('/home');
+        res.redirect('/profile');
     else
         return next();
 }

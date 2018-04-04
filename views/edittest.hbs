@@ -79,15 +79,17 @@
                                         </div>
                                     </form>
                                     <h3>Questions</h3>
-                                    <ul>
+                                    <ul class="alt">
                                         {{#each questions}}
-                                            <h4>{{@index}}. {{this.body}}</h4>
+                                        <li>
+                                            <h4>{{this.body}}</h4>
                                             <p>a. {{this.op1}}</p>
                                             <p>b. {{this.op2}}</p>
                                             <p>c. {{this.op3}}</p>
                                             <p>d. {{this.op4}}</p>
                                             <p>Correct option : <strong>{{this.correct}}</strong></p>
                                             <p>Score for Question: <strong>{{this.score}}</strong></p>
+                                        </li>
                                         {{/each}}
                                     </ul>
                                     <h3>Add a new Question</h3>
