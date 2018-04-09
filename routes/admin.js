@@ -42,18 +42,18 @@ router.manage = function(req,res){
 }
 
 router.edittest = function(req,res){
-    db.query("SELECT * FROM test INNER JOIN admins ON test.id=admins.test WHERE admins.user=? AND test.id=?",
+    db.query("SELECT id,title,description,added,test,user,date_format(start,'%Y-%m-%d %h:%i %p') as start,date_format(end,'%Y-%m-%d %h:%i %p') as end FROM test INNER JOIN admins ON test.id=admins.test WHERE admins.user=? AND test.id=?",
     [req.user.email,req.params.id],function(err,result){
         if(err) throw err;
         if(result.length==0)
             return res.status(404).send('Not Found');
         let response = result[0];
-        let start=new Date(response.start);
-        let end=new Date(response.end);
-        var d=start.toISOString().split(/[TZ]/);
+        let start=response.start;
+        let end=response.end;
+        var d=start.split(" ");
         response.startdate=d[0];
         response.starttime=d[1];
-        var d=end.toISOString().split(/[TZ]/);
+        var d=end.split(" ");
         response.enddate=d[0];
         response.endtime=d[1];
         
